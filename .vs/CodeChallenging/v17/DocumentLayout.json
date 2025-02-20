@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{AE82335F-3AEB-45CF-BCD5-09F89FFA64D9}|CodeChallenging.csproj|d:\\arquivos\\programation\\workspace-csharp\\2025\\month_02\\01_http_request_code_challenging\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE82335F-3AEB-45CF-BCD5-09F89FFA64D9}|CodeChallenging.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE82335F-3AEB-45CF-BCD5-09F89FFA64D9}|CodeChallenging.csproj|d:\\arquivos\\programation\\workspace-csharp\\2025\\month_02\\01_http_request_code_challenging\\controllers\\typicodecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE82335F-3AEB-45CF-BCD5-09F89FFA64D9}|CodeChallenging.csproj|solutionrelative:controllers\\typicodecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE82335F-3AEB-45CF-BCD5-09F89FFA64D9}|CodeChallenging.csproj|d:\\arquivos\\programation\\workspace-csharp\\2025\\month_02\\01_http_request_code_challenging\\clientservices\\contracts\\jsonplaceholderclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE82335F-3AEB-45CF-BCD5-09F89FFA64D9}|CodeChallenging.csproj|solutionrelative:clientservices\\contracts\\jsonplaceholderclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE82335F-3AEB-45CF-BCD5-09F89FFA64D9}|CodeChallenging.csproj|d:\\arquivos\\programation\\workspace-csharp\\2025\\month_02\\01_http_request_code_challenging\\clientservices\\interfaces\\ijsonplaceholderclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE82335F-3AEB-45CF-BCD5-09F89FFA64D9}|CodeChallenging.csproj|solutionrelative:clientservices\\interfaces\\ijsonplaceholderclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T02:09:27.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TypicodeController.cs",
+              "DocumentMoniker": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\Controllers\\TypicodeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TypicodeController.cs",
+              "ToolTip": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\Controllers\\TypicodeController.cs",
+              "RelativeToolTip": "Controllers\\TypicodeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T02:09:07.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IJsonplaceholderClientService.cs",
+              "DocumentMoniker": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\ClientServices\\Interfaces\\IJsonplaceholderClientService.cs",
+              "RelativeDocumentMoniker": "ClientServices\\Interfaces\\IJsonplaceholderClientService.cs",
+              "ToolTip": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\ClientServices\\Interfaces\\IJsonplaceholderClientService.cs",
+              "RelativeToolTip": "ClientServices\\Interfaces\\IJsonplaceholderClientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T02:08:54.732Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "JsonplaceholderClientService.cs",
+              "DocumentMoniker": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\ClientServices\\Contracts\\JsonplaceholderClientService.cs",
+              "RelativeDocumentMoniker": "ClientServices\\Contracts\\JsonplaceholderClientService.cs",
+              "ToolTip": "D:\\arquivos\\programation\\workspace-Csharp\\2025\\month_02\\01_http_request_code_challenging\\ClientServices\\Contracts\\JsonplaceholderClientService.cs",
+              "RelativeToolTip": "ClientServices\\Contracts\\JsonplaceholderClientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-20T02:07:48.559Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
