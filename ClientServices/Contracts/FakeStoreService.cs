@@ -8,10 +8,7 @@ namespace CodeChallenging.ClientServices.Contracts
     {
         private readonly IHttpClientFactory _clientFactory;
 
-        public FakeStoreService(IHttpClientFactory clientFactory)
-        {
-            _clientFactory = clientFactory;
-        }
+        public FakeStoreService(IHttpClientFactory clientFactory) => _clientFactory = clientFactory;
 
         public async Task<IEnumerable<Product>> FindProductsAsync()
         {

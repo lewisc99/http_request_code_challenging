@@ -6,6 +6,7 @@ public class JsonplaceholderClientService: IJsonplaceholderClientService
     private readonly HttpClient _httpClient;
 
     public JsonplaceholderClientService(HttpClient httpClient) => _httpClient = httpClient;
+
     public async Task<JsonPlaceHolder[]> Get(int? Id,int? UserId)
     {
         try
