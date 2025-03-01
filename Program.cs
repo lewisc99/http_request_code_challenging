@@ -8,15 +8,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IFakeStoreService, FakeStoreService>();
 
-builder.Services.AddHttpClient<IJsonplaceholderClientService,JsonplaceholderClientService>(client =>
+
+string fakeStoreApiUrl = builder.Configuration.GetValue<string>("API:FakeStore");
+
+builder.Services.AddHttpClient<IFakeStoreService, FakeStoreService>(client =>
 {
-    client.BaseAddress = new Uri(builder.Configuration["API"]!);
+    client.BaseAddress = new Uri(fakeStoreApiUrl);
 });
 
-builder.Services.AddHttpClient("FakeStore", httpClient =>
+string jsonPlaceholderUrl = builder.Configuration.GetValue<string>("API:JsonPlaceholder");
+
+builder.Services.AddHttpClient<IJsonplaceholderClientService, JsonplaceholderClientService>(client =>
 {
-    httpClient.BaseAddress = new Uri("https://fakestoreapi.com/");
+    client.BaseAddress = new Uri(jsonPlaceholderUrl);
 });
+
 
 var app = builder.Build();
 
