@@ -10,14 +10,10 @@ namespace CodeChallenging.Controllers
     {
 
         public IJsonplaceholderClientService _service;
+
         public TypicodeController(IJsonplaceholderClientService service) => _service = service;
 
         [HttpGet()]
-        public async Task<ActionResult<JsonPlaceHolder[]>> get([FromQuery] int Id, [FromQuery] int UserId)
-        {
-            JsonPlaceHolder[] result =  await _service.Get(Id, UserId);
-
-            return result;
-        }
+        public async Task<ActionResult<JsonPlaceHolder[]>> get([FromQuery] int Id, [FromQuery] int UserId) => await _service.Get(Id, UserId);
     }
 }

@@ -11,14 +11,10 @@ namespace CodeChallenging.Controllers
     {
 
         public IFakeStoreService _service;
+
         public FakeStoreController(IFakeStoreService service) => _service = service;
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<Product>>> get()
-        {
-            var result = await _service.FindProductsAsync();
-
-            return Ok(result);
-        }
+        public async Task<ActionResult<IEnumerable<Product>>> get() => Ok(await _service.FindProductsAsync());
     }
 }

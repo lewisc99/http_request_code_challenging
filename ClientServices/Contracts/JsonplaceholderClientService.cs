@@ -36,7 +36,7 @@ public class JsonplaceholderClientService: IJsonplaceholderClientService
         }
         catch (Exception ex)
         {
-            throw new Exception("Error fetching data",ex);
+            throw new Exception("Error fetching data", ex);
         }
     }
 
