@@ -9,7 +9,6 @@ namespace CodeChallenging.Controllers
     [Route("[controller]")]
     public class FakeStoreController: ControllerBase
     {
-
         public IFakeStoreService _service;
 
         public FakeStoreController(IFakeStoreService service) => _service = service;

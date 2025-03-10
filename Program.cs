@@ -1,5 +1,6 @@
 using CodeChallenging.ClientServices.Contracts;
 using CodeChallenging.ClientServices.Interfaces;
+using CodeChallenging.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,8 @@ string fakeStoreApiUrl = builder.Configuration.GetValue<string>("API:FakeStore")
 builder.Services.AddHttpClient<IFakeStoreService, FakeStoreService>(client =>
 {
     client.BaseAddress = new Uri(fakeStoreApiUrl);
-});
+}).SetHandlerLifetime(TimeSpan.FromMinutes(5)) 
+        .AddPolicyHandler(PollyExtensions.GetRetryPolicy());
 
 string jsonPlaceholderUrl = builder.Configuration.GetValue<string>("API:JsonPlaceholder");
 
