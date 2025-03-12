@@ -16,7 +16,10 @@ builder.Services.AddHttpClient<IFakeStoreService, FakeStoreService>(client =>
 {
     client.BaseAddress = new Uri(fakeStoreApiUrl);
 }).SetHandlerLifetime(TimeSpan.FromMinutes(5)) 
-        .AddPolicyHandler(PollyExtensions.GetRetryPolicy());
+        // Old code without Jitter
+        //.AddPolicyHandler(PollyExtensions.GetRetryPolicy());
+        .AddPolicyHandler(PollyExtensions.GetJitterRetryPolicy());
+
 
 string jsonPlaceholderUrl = builder.Configuration.GetValue<string>("API:JsonPlaceholder");
 
