@@ -1,5 +1,6 @@
 ﻿using CodeChallenging.ClientServices.Interfaces;
 using CodeChallenging.Entities;
+using Polly.CircuitBreaker;
 using System.Text.Json;
 
 namespace CodeChallenging.ClientServices.Contracts
@@ -12,17 +13,26 @@ namespace CodeChallenging.ClientServices.Contracts
 
         public async Task<IEnumerable<Product>> FindProductsAsync()
         {
-            var client = _clientFactory.CreateClient("FakeStore");
+            try
+            {
+                var client = _clientFactory.CreateClient("FakeStore");
 
-            var response = await client.GetAsync("products");
+                var response = await client.GetAsync("products");
 
-            response.EnsureSuccessStatusCode();
+                response.EnsureSuccessStatusCode();
 
-            var content = await response.Content.ReadAsStreamAsync();
+                var content = await response.Content.ReadAsStreamAsync();
 
-            var result = await JsonSerializer.DeserializeAsync<IEnumerable<Product>>(content);
+                var result = await JsonSerializer.DeserializeAsync<IEnumerable<Product>>(content);
 
-            return result;
+                return result;
+            }
+            catch (BrokenCircuitException)
+            {
+                IEnumerable<Product> emptyProduct = Enumerable.Empty<Product>();
+                return emptyProduct;
+            }
+
         }
     }
 }
