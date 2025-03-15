@@ -2,28 +2,35 @@ using CodeChallenging.ClientServices.Contracts;
 using CodeChallenging.ClientServices.Interfaces;
 using CodeChallenging.Database;
 using CodeChallenging.Extensions;
-using Domain.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Polly;
-using Polly.Extensions.Http;
+using Polly.Extensions.Http; 
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddHealthChecks()
-    // Add a health check for a SQL Server database
+    // URL health check for FakeStore API
+    .AddUrlGroup(new Uri(builder.Configuration["API:FakeStore"]),
+        name: "FakeStore API",
+        failureStatus: HealthStatus.Unhealthy)
+
+    // URL health check for JsonPlaceholder API
+    .AddUrlGroup(new Uri(builder.Configuration["API:JsonPlaceholder"]),
+        name: "JsonPlaceholder API",
+        failureStatus: HealthStatus.Unhealthy)
+
+    // Custom SQL Server health check
     .AddCheck(
         "OrderingDB-check",
         new SqlConnectionHealthCheck(builder.Configuration.GetConnectionString("DefaultConnection")),
         HealthStatus.Unhealthy,
-        new string[] { "orderingdb" });
+        new[] { "HttpClientDb" });
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IFakeStoreService, FakeStoreService>();
-
 
 string fakeStoreApiUrl = builder.Configuration.GetValue<string>("API:FakeStore");
 var circuitBreakerPolicy = GetCircuitBreakerPolicy();
@@ -55,6 +62,23 @@ builder.Services.AddHttpClient<IJsonplaceholderClientService, JsonplaceholderCli
     client.BaseAddress = new Uri(jsonPlaceholderUrl);
 });
 
+builder.Services.AddDbContext<HealthCheckDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+    sqlOptions => sqlOptions.MigrationsAssembly("CodeChallenging")));
+
+builder.Services
+    .AddHealthChecksUI(settings =>
+    {
+        settings.SetEvaluationTimeInSeconds(5); // How often to check health status
+        settings.SetMinimumSecondsBetweenFailureNotifications(60); // Minimum time between failure notifications
+        settings.MaximumHistoryEntriesPerEndpoint(50); // Number of history entries to keep
+        
+    })
+      .AddSqlServerStorage(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions => sqlOptions.MigrationsAssembly("CodeChallenging"))
+);
 
 var app = builder.Build();
 
@@ -65,6 +89,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapHealthChecks("/hc");
+app.UseHealthChecksUI(config => config.UIPath = "/hc-ui");
 
 app.UseHttpsRedirection();
 
