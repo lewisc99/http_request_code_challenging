@@ -1,12 +1,26 @@
 using CodeChallenging.ClientServices.Contracts;
 using CodeChallenging.ClientServices.Interfaces;
+using CodeChallenging.Database;
 using CodeChallenging.Extensions;
-using Microsoft.Extensions.DependencyInjection;
+using Domain.Database;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Polly;
-using Polly.CircuitBreaker;
 using Polly.Extensions.Http;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), builder =>
+            builder.MigrationsAssembly("CodeChallenging")));
+
+builder.Services.AddHealthChecks()
+    // Add a health check for a SQL Server database
+    .AddCheck(
+        "OrderingDB-check",
+        new SqlConnectionHealthCheck(builder.Configuration.GetConnectionString("DefaultConnection")),
+        HealthStatus.Unhealthy,
+        new string[] { "orderingdb" });
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -52,6 +66,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.MapHealthChecks("/hc");
 
 app.UseHttpsRedirection();
 
