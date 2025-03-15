@@ -10,9 +10,6 @@ using Polly.Extensions.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), builder =>
-            builder.MigrationsAssembly("CodeChallenging")));
 
 builder.Services.AddHealthChecks()
     // Add a health check for a SQL Server database
