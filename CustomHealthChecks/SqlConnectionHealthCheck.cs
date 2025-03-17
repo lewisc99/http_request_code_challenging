@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.Data.Common;
 
-namespace CodeChallenging.Database
+namespace CodeChallenging.CustomHealthChecks
 {
     public class SqlConnectionHealthCheck : IHealthCheck
     {
@@ -23,7 +23,7 @@ namespace CodeChallenging.Database
             TestQuery = testQuery;
         }
 
-        public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
